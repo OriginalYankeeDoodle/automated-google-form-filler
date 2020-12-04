@@ -5,7 +5,7 @@ A python script to automate Google Forms.
 Due to the pandemic, I had online classes where I had to fill Google Form fir attendance each period everyday. This seemed to be a very tedious task for me so I decided to automate it.
 This is how my attendance form looked like.
 
-<div style="text-align:center"><img src="images/form.png" alt="flag"></div>
+<div style="text-align:center"><img src="form.png" alt="flag"></div>
 
 ## Things To Remember
 
