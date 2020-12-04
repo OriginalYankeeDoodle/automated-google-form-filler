@@ -9,5 +9,5 @@ This is how my attendance form looked like.
 
 ## Things To Remember
 
-- Every Google Form is different and has different fields.So you have to change the parameters in `send_answers()` function as per your needs.
+- Every Google Form is different and has different fields. So you have to change the parameters in `send_answers()` function as per your needs.
 - Some Forms need to submit a reCaptcha before submitting the form. This script won't work for them.
