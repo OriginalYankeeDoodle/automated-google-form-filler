@@ -3,26 +3,30 @@ from bs4 import BeautifulSoup
 import re
 from datetime import date
 
-def get_question_ids(url):
-    
-    ''' Returns a list of entry IDs of various fields in a Google Form'''
+def get_questions(url):
     
     page = requests.get(url)
     soup = BeautifulSoup(page.content, 'html.parser')
     
     content = soup.body.find_all(text = re.compile('var FB'))
-
+    
+    match = re.findall('[,]["][\w\s]+["][,]', str(content))
+    question_strings = [x.strip('"') for x in match]
+    
     match_ids = re.findall('(?<=\[\[)(\d+)', str(content))
     question_ids = ['entry.' + x for x in match_ids[1:]]
     
     return question_ids
+    
+#    questions = dict(zip(question_strings, question_ids))    
+#    return questions
 
 
 def send_answers(url, fname, lname, section, roll_no, subject, date, attendance): #Change the parameters other than url as per your needs
     
     '''Sends the answers for a Google Form'''
     
-    ids = get_question_ids(url)
+    ids = get_questions(url)
     
     answers = [fname, lname, section, roll_no, subject, date, attendance]
     response = dict(zip(ids, answers))
